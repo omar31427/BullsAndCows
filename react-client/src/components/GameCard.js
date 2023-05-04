@@ -24,7 +24,7 @@ function GameCard(){
     }
     return(<>
             <Card  style = {{ position : 'relative'}}>
-                <Card.Img  src="logo512.png" style={{height:'40rem'}}/>
+                <Card.Img  src="Cow.png" style={{height:'40rem'}}/>
                 <Card.Body>
                     <div className="row">
                         <Button variant="primary" className="col-3" style = {{marginRight : '10px'}} onClick = {openRules}>Game rules</Button>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function HistoryTable({history}){
-    console.log(history);
+
     return (<>
         <table style={{width: '100%', borderWidth: '1px'}}>
             <thead>

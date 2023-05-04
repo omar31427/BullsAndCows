@@ -4,7 +4,6 @@ function HighScoresTable({highScoresTable,setHighScoresTable}){
     const [scores,setScores] = useState([]);
 
     function handleResponse(response) {
-        console.log("handling");
         if (!response.ok) {
             throw new Error(`Some error occured : ${response.status} ${response.statusText}`);
         }
@@ -13,15 +12,12 @@ function HighScoresTable({highScoresTable,setHighScoresTable}){
     }
 
     function handleJson(jsonStr) {
-        console.log(jsonStr)
-        //const jsonObject = JSON.parse(jsonStr);
-        //console.log(jsonObject[0]);
-        //const map = new Map(Object.entries(jsonStr));
+
         const arr = Object.entries(jsonStr);
-        console.log(arr);
+
 
         setScores(arr)
-        console.log(scores);
+
     }
     let params = {}
     useEffect(() => {

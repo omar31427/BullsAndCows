@@ -50,6 +50,7 @@ function Game({history,addToHistory,start,setStart,numGuesses,setNumGuesses,high
 
     function changeInput  (index,newVal){
           inputs[index] = newVal;
+        console.log('random digit array = '+ranDigitArr);
     };
 
     return (

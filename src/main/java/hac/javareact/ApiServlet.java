@@ -6,6 +6,9 @@ import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.xml.transform.Result;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -27,7 +30,7 @@ public class ApiServlet extends HttpServlet {
 
         response.setContentType("application/json");
         response.setHeader("Access-Control-Allow-Origin", "*");
-        // your code here
+
         String name = request.getParameter(NAME);
         int score = Integer.parseInt(request.getParameter(SCORE));
 
@@ -39,20 +42,32 @@ public class ApiServlet extends HttpServlet {
                 file.createNewFile();
                 //System.out.println("Created file: " + fileName);
             } else {
+                // Read existing data from file
+                List<String> lines = Files.readAllLines(file.toPath());
+
+                // Update the score for the given name
+                boolean nameFound = false;
+                for (int i = 0; i < lines.size(); i++) {
+                    String line = lines.get(i);
+                    String[] parts = line.split(" ");
+                    if (parts[0].equals(name)) {
+                        lines.set(i, name + " " + score);
+                        nameFound = true;
+                        break;
+                    }
+                }
+
+                // If the name was not found in the file, add a new line for it
+                if (!nameFound) {
+                    lines.add(name + " " + score);
+                }
+
+                // Write the updated data back to the file
+                Files.write(file.toPath(), lines, StandardCharsets.UTF_8);
             }
-            FileWriter fileWriter = new FileWriter(file, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            String data = name+" "+score+"\n";
-            bufferedWriter.write(data);
-
-            bufferedWriter.close();
-            fileWriter.close();
-
         } catch (IOException e) {
             System.err.println("Error opening/creating file: " + e.getMessage());
-        }
-        // note: this is necessary to allow cross-origin requests from the React frontend
+        }     // note: this is necessary to allow cross-origin requests from the React frontend
         // response.setHeader("Access-Control-Allow-Origin", "*");
 
         // remove this line ! it's only for you to browse the template

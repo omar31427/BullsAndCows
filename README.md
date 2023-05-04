@@ -1,11 +1,16 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/YDg-_nm7)
 ## Authors
-* Name:  Email:
-* Name:  Email:
+* Omar abdel al:  omarab@edu.hac.ac.il:
+
 
 ## Explanations
 
-(Explain here your project)
+n this exercise we were asked to create a game of cows and bulls. The program will generate a 4 digit number and the user will have to guess what is the number.
+If the user manages to guess a digit that appears in the generated number, he'll get a hint of a cow. If the user manages to guess a digit that appears in the correct index of the generated number, he'll get a hint of a bull.
+When the user wins he'll be able to see all scores. The scores will be saved in a score.dat file and will be sent to the program via servlets.
+
+I am well aware of the styling of the exercise but unfortunately I did not have enough time to style the site properly
+ברצוני להשתמש בשלושה ימי חסד
 
 ## How to use this template
 This is the template for a project where front-end and back-end are separated.
